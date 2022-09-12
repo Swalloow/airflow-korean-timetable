@@ -8,8 +8,6 @@ from pendulum import DateTime, Time, constants
 
 
 class BeforeWorkdayTimetable(Timetable, LoggingMixin):
-    """ """
-
     @property
     def summary(self) -> str:
         return "@beforework"
@@ -18,14 +16,14 @@ class BeforeWorkdayTimetable(Timetable, LoggingMixin):
         """Update to 00:00:00 UTC"""
         return start.set(hour=0, minute=0, second=0, tz="UTC")
 
-    def skip_holidays(self, start: DateTime) -> DateTime:
-        end_date = start.add(days=1).date()
+    def skip_holidays(self, last_start: DateTime) -> DateTime:
+        next_end = last_start.add(days=2).date()
         skip_days = 0
 
         for holiday in holidays:
-            if end_date == holiday.date.subtract(days=1):
+            if next_end == holiday.date:
                 skip_days = holiday.days
-        return start.add(days=skip_days)
+        return last_start.add(days=skip_days)
 
     def infer_manual_data_interval(self, run_after: DateTime) -> DataInterval:
         end = self.init_time(run_after)

@@ -39,7 +39,7 @@ x-airflow-common:
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'Asia/Seoul'
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
-    AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__CORE__LAZY_LOAD_PLUGINS: 'false'
     AIRFLOW__LOGGING__LOGGING_LEVEL: "INFO"
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
