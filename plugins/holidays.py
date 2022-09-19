@@ -1,10 +1,9 @@
-from dataclasses import dataclass
+from typing import NamedTuple
 
 from pendulum import Date
 
 
-@dataclass(frozen=True)
-class Holidays:
+class Holidays(NamedTuple):
     date: Date
     days: int = 1
 
